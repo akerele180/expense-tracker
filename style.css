@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --red: #ec0e0e;
+  --green: #33e47d;
+  --purple: #9c88ff;
+}
+body {
+  font-family: Lato, "sans-serif";
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 0 5px;
+  background-color: #dedede56;
+}
+header {
+  text-transform: capitalize;
+  font-weight: lighter;
+  text-align: center;
+  line-height: 5rem;
+}
+section {
+  margin: 20px 0;
+}
+section h3 {
+  text-transform: uppercase;
+  padding: 5px 0;
+}
+.money-dashboard {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 3px #00000010;
+}
+div.income,
+div.expense {
+  width: 50%;
+  text-transform: uppercase;
+}
+div.income {
+  border-right: 1px solid #dedede;
+}
+.income {
+  letter-spacing: 1.2px;
+  padding: 3px 0;
+}
+.red {
+  color: var(--red);
+}
+.green {
+  color: var(--green);
+}
+.expense {
+  letter-spacing: 1.2px;
+  padding: 3px 0;
+}
+div.history,
+div.new-transaction {
+  border-bottom: 1px solid #c0c0c0;
+  padding: 5px 0;
+  margin: 20px 0 10px;
+}
+div.list {
+  background-color: #fff;
+  border-right: 3px solid;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 8px 0;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+div.list:hover .fa-trash {
+  opacity: 1;
+}
+div.list p:first-of-type {
+  font-weight: bold;
+  color: #000 !important;
+}
+.fa-trash {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  left: 0;
+  transform: translate(-120%, -50%);
+  z-index: -3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.btn {
+  background-color: var(--purple);
+  text-align: center;
+  padding: 8px 0;
+  color: #fff;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+}
+label {
+  font-weight: bold;
+  /* line-height: 2rem; */
+  /* margin: 5px 0 20px; */
+}
+span {
+  display: block;
+  padding: 0;
+  line-height: 1.5rem;
+}
+input {
+  padding: 10px 10px;
+  border: 0;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  outline: none;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
