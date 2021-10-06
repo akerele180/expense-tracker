@@ -67,36 +67,7 @@ div.new-transaction {
   padding: 5px 0;
   margin: 20px 0 10px;
 }
-div.list {
-  background-color: #fff;
-  border-right: 3px solid;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin: 8px 0;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-}
-div.list:hover .fa-trash {
-  opacity: 1;
-}
-div.list p:first-of-type {
-  font-weight: bold;
-  color: #000 !important;
-}
-.fa-trash {
-  position: absolute;
-  font-size: 20px;
-  top: 50%;
-  left: 0;
-  transform: translate(-120%, -50%);
-  z-index: -3;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+
 form {
   display: flex;
   flex-direction: column;
@@ -104,19 +75,59 @@ form {
 .btn {
   background-color: var(--purple);
   text-align: center;
-  padding: 8px 0;
-  color: #fff;
+  padding: 10px 0;
+  font-weight: bold;
+  text-transform: capitalize;
+  /* letter-spacing: 1px; */
+  /* font-size: 1rem; */
+  color: #ffffff;
   outline: none;
   border: 0;
   cursor: pointer;
 }
+ul {
+  position: relative;
+}
 li {
   list-style-type: none;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px #00000010;
+  padding: 5px 10px;
+  margin: 5px 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+}
+button.btn-del {
+  position: absolute;
+  left: -5%;
+  color: #fff;
+  border-radius: 3px;
+  background-color: var(--red);
+  border: none;
+  font-weight: bold;
+  padding: 1px 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+  cursor: pointer;
+}
+li:hover button.btn-del {
+  opacity: 1;
+}
+.item-green {
+  border-right: 5px solid var(--green);
+  /* border-radius: 0 5px 5px 0; */
+}
+.item-red {
+  border-right: 5px solid var(--red);
+  /* border-radius: 0 5px 5px 0; */
 }
 label {
   font-weight: bold;
-  /* line-height: 2rem; */
-  /* margin: 5px 0 20px; */
 }
 span {
   display: block;
@@ -124,9 +135,9 @@ span {
   line-height: 1.5rem;
 }
 input {
-  padding: 10px 10px;
+  padding: 2% 3%;
   border: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   outline: none;
   margin-top: 5px;
