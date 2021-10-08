@@ -1,4 +1,4 @@
-const addBtn = document.getElementById("btn");
+const addBtn = document.getElementById("form");
 const getMoney = document.getElementById("money-input");
 const getText = document.getElementById("text-input");
 const incomeTotal = document.getElementById("income");
@@ -10,14 +10,41 @@ const list = document.getElementById("list");
 
 const dummyTransactions = [
   { id: 1, text: "rice", amount: -500 },
-  { id: 2, text: "cash", amount: +600 },
+  { id: 2, text: "cash", amount: 600 },
   { id: 2, text: "data", amount: -1000 },
-  { id: 2, text: "giveaway", amount: +3000 },
+  { id: 2, text: "giveaway", amount: 3000 },
 ];
 
 let transactions = dummyTransactions;
-
+// FUNTION DEFINITIONS
 // Add transaction to DOM list
+function addTransaction(e) {
+  e.preventDefault();
+  if (getText.value.trim() === "" || getMoney.value === "") {
+    alert("Please fill in the input fields");
+  } else {
+    const transaction = {
+      id: generateID(),
+      text: getText.value,
+      amount: +getMoney.value,
+    };
+
+    transactions.push(transaction);
+    addTransactionDom(transaction);
+    updateValues();
+
+    getText.value = "";
+    getMoney.value = "";
+    console.log(transactions);
+  }
+}
+
+function generateID() {
+  return Math.floor(Math.random() * 100000);
+}
+// function removeTransaction(transactions.id) {
+//   return
+// }
 function addTransactionDom(transactions) {
   // setting up the sign convention
   const sign = transactions.amount > 0 ? "+" : "-";
@@ -28,7 +55,9 @@ function addTransactionDom(transactions) {
 
   item.innerHTML = `${transactions.text} <span>${sign}₦${Math.abs(
     transactions.amount
-  )}</span><button class="btn-del" id="btn-del">x</button>`;
+  )}</span><button class="btn-del" id="btn-del" onClick="removeTransaction(${
+    transactions.id
+  })">x</button>`;
 
   list.appendChild(item);
 }
@@ -40,19 +69,21 @@ function updateValues() {
   console.log(amounts);
 
   const total = amounts.reduce((acc, item) => (acc += item)).toFixed(2);
-  console.log("total money is: ", total);
 
-  const incomeArr = amounts.filter((amount) => amount > 0);
-  const expenseArr = amounts.filter((amount) => amount < 0);
+  const income = amounts
+    .filter((amount) => amount > 0)
+    .reduce((acc, item) => (acc += item))
+    .toFixed(2);
 
-  const incomed = incomeArr.reduce((acc, item) => (acc += item)).toFixed(2);
-  const expensed = expenseArr.reduce((acc, item) => (acc += item)).toFixed(2);
-  console.log(incomed);
-  console.log(expensed);
+  const expense =
+    amounts
+      .filter((amount) => amount < 0)
+      .reduce((acc, item) => (acc += item))
+      .toFixed(2) * -1;
 
-  balance.innerText = total;
-  income.innerText = incomed;
-  expense.innerText = expensed;
+  balance.innerText = `₦${total}`;
+  incomeTotal.innerText = `₦${income}`;
+  expenseTotal.innerText = `₦${expense}`;
 }
 
 updateValues();
@@ -64,3 +95,6 @@ function init() {
 }
 
 init();
+
+// Event Listeners
+addBtn.addEventListener("submit", addTransaction);
